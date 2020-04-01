@@ -1,0 +1,135 @@
+main {
+    width: 336px;
+    margin: 0px auto;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+}
+
+#header-field {
+    width: 336px;
+    height: 28px;
+    background: #FFDC40;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#sort-field {
+    width: 310px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 5px;
+}
+
+#sort-button {
+    width: 35px;
+    height: 20px;
+    background-image: url(/images/low\ to\ high.png);
+    background-repeat: no-repeat;
+    background-color: white;
+    border: none;
+}
+
+#buttons-and-input-field {
+    display: flex;
+    justify-content: center;
+}
+
+#drag-button {
+    width: 40px;
+    height: 38px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #C4C4C4;
+    border-right: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#four-dots {
+    font-size: 175%;
+}
+
+#input {
+    width: 206px;
+    height: 34px;
+    border: 1px solid #C4C4C4;
+    border-right: none;
+    border-right: none;
+}
+
+#input-field {
+    width: 206px;
+    float: left;
+}
+
+.button-field {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+#delete-button {
+    width: 40px;
+    height: 38px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid #C4C4C4;
+    border-left: none;
+}
+
+#delete-mark {
+    display: inline-block;
+    border: 1px solid #C4C4C4;
+    color: #C4C4C4;
+    border-radius: 100%;
+    width: 18px;
+}
+
+#add-field {
+    width: 336px;
+    display: flex;
+    justify-content: center;
+}
+
+#add-button {
+    margin-top: 18px;
+    margin-bottom: 19px;
+    width: 150px;
+    height: 42px;
+    background: #833AE0;
+    border-color: #833AE0;
+    border-radius: 71px;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    border: none;
+    justify-content: center;
+    position: relative;
+}
+
+#plus {
+    display: inline-block;
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    background-color: #9953F1;
+    color: white;
+    box-sizing: border-box;
+    padding: 8.5%;
+    position: absolute;
+    left: 0px;
+}
