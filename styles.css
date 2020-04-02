@@ -1,6 +1,12 @@
+body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
 main {
     width: 336px;
-    margin: 232px auto;
+    margin: 0px auto;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;
@@ -77,9 +83,20 @@ hr {
     width: 15px;
 }
 
+.task-list-div {
+    width: 336px;
+    margin: 0px auto;
+}
+
 .buttons-and-input-field {
     display: flex;
     justify-content: center;
+}
+
+.drag-button-field {
+    width: 40px;
+    height: 40px;
+    float: left;
 }
 
 .drag-button {
@@ -90,9 +107,7 @@ hr {
     border: 1px solid #C4C4C4;
     border-right: none;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     background-color: white;
     outline: none;
 }
@@ -117,12 +132,6 @@ hr {
 
 .input-field {
     width: 206px;
-    float: left;
-}
-
-.drag-button-field {
-    width: 40px;
-    height: 40px;
     float: left;
 }
 
