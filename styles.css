@@ -38,6 +38,7 @@ h1 {
     align-items: center;
     color: black;
     opacity: 20%;
+    outline: none;
 }
 
 #sort-button:hover {
@@ -92,6 +93,7 @@ hr {
     flex-direction: row;
     justify-content: space-around;
     background-color: white;
+    outline: none;
 }
 
 #four-dots {
@@ -109,6 +111,7 @@ hr {
     border: 1px solid #C4C4C4;
     border-right: none;
     border-left: none;
+    outline-color: #FFDC40;
 }
 
 #input-field {
@@ -130,6 +133,7 @@ hr {
     border: 1px solid #C4C4C4;
     border-left: none;
     background-color: white;
+    outline: none;
 }
 
 #delete-mark {
@@ -171,6 +175,7 @@ hr {
     border: none;
     justify-content: center;
     position: relative;
+    outline: none;
 }
 
 #add-button:hover {
