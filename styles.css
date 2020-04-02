@@ -10,6 +10,7 @@ main {
 h1 {
     text-align: center;
     font-weight: 900;
+    margin-bottom: 0px;
 }
 
 #header-field {
@@ -35,13 +36,18 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
+    opacity: 20%;
+}
+
+#sort-button:hover {
+    opacity: 100%;
 }
 
 #arrow {
     width: 20px;
     height: 26px;
     font-size: 19px;
-    color: #C4C4C4;
 }
 
 #hr-field {
@@ -53,8 +59,8 @@ hr {
     text-align: left;
     margin: 2.5px 0px;
     height: 2.5px;
-    background-color: #C4C4C4;
     border: none;
+    background-color: black;;
 }
 
 #top-hr {
@@ -90,6 +96,11 @@ hr {
 
 #four-dots {
     font-size: 175%;
+    transition: 0.1s;
+}
+
+#four-dots:hover {
+    transform: scale(1.5);
 }
 
 #input {
@@ -127,6 +138,12 @@ hr {
     color: #C4C4C4;
     border-radius: 100%;
     width: 18px;
+    transition: 0.1s;
+}
+
+#delete-mark:hover {
+    background-color: #833AE0;
+    color: white;
 }
 
 #add-field {
@@ -154,6 +171,10 @@ hr {
     border: none;
     justify-content: center;
     position: relative;
+}
+
+#add-button:hover {
+    opacity: 75%;
 }
 
 #plus {
