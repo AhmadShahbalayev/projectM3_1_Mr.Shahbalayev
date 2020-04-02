@@ -39,6 +39,7 @@ h1 {
     color: black;
     opacity: 20%;
     outline: none;
+    transition: 0.1s;
 }
 
 #sort-button:hover {
@@ -76,12 +77,12 @@ hr {
     width: 15px;
 }
 
-#buttons-and-input-field {
+.buttons-and-input-field {
     display: flex;
     justify-content: center;
 }
 
-#drag-button {
+.drag-button {
     width: 40px;
     height: 38px;
     border-top-left-radius: 10px;
@@ -96,16 +97,16 @@ hr {
     outline: none;
 }
 
-#four-dots {
+.four-dots {
     font-size: 175%;
     transition: 0.1s;
 }
 
-#four-dots:hover {
+.four-dots:hover {
     transform: scale(1.5);
 }
 
-#input {
+.input {
     width: 206px;
     height: 34px;
     border: 1px solid #C4C4C4;
@@ -114,18 +115,18 @@ hr {
     outline-color: #FFDC40;
 }
 
-#input-field {
+.input-field {
     width: 206px;
     float: left;
 }
 
-.button-field {
+.drag-button-field {
     width: 40px;
     height: 40px;
     float: left;
 }
 
-#delete-button {
+.delete-button {
     width: 40px;
     height: 38px;
     border-top-right-radius: 10px;
@@ -136,7 +137,7 @@ hr {
     outline: none;
 }
 
-#delete-mark {
+.delete-mark {
     display: inline-block;
     border: 1px solid #C4C4C4;
     color: #C4C4C4;
@@ -145,7 +146,7 @@ hr {
     transition: 0.1s;
 }
 
-#delete-mark:hover {
+.delete-mark:hover {
     background-color: #833AE0;
     color: white;
 }
@@ -176,6 +177,7 @@ hr {
     justify-content: center;
     position: relative;
     outline: none;
+    transition: 0.1s;
 }
 
 #add-button:hover {
