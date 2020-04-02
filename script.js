@@ -1,14 +1,20 @@
 const sortButton = document.getElementById('sort-button');
-const arrow = document.getElementById('arrow');
-const topHr = document.getElementById('top-hr');
-const middleHr = document.getElementById('middle-hr');
-const bottomHr = document.getElementById('bottom-hr');
+const arrow = document.querySelector('.arrow-reverse');
+const topHr = document.querySelector('.top-hr');
+const middleHr = document.querySelector('.middle-hr');
+const bottomHr = document.querySelector('.bottom-hr');
 const mainBody = document.getElementById('task-list-div');
-const input = document.getElementById('input');
-const deleteButton = document.querySelector('.delete-button');
+const input = document.getElementById('input-id');
+const deleteButton = document.getElementById('button-delete');
 const addButton = document.getElementById('add-button');
 
 addButton.addEventListener('click', addNewTask);
+
+document.addEventListener('keyup', (event) => {
+    if (event.key == 'Enter') {
+        addNewTask();
+    }
+})
 
 function addNewTask() {
     // CREATES NEW BUTTONS AND INPUT FIELD:
@@ -34,8 +40,13 @@ function addNewTask() {
     const newDeleteButtonField = document.createElement('div');
     // CREATES NEW DELETE BUTTON:
     const newDeleteButton =document.createElement('button');
+    // newDeleteButton.addEventListener('click', deleteTask)
     newDeleteButton.classList.add('delete-button');
-    newDeleteButton.innerHTML = '<span class="delete-mark">&#10005;</span>';
+    const span = document.createElement('span');
+    span.classList.add('delete-mark');
+    span.innerHTML = "&#10005;";
+    newDeleteButton.appendChild(span);
+    span.addEventListener('click', deleteTask);
     newDeleteButtonField.appendChild(newDeleteButton);
     newButtonsAndInputField.append(newDeleteButtonField);
     appendTask(newButtonsAndInputField);
@@ -43,5 +54,43 @@ function addNewTask() {
 
 function appendTask(task) {
     mainBody.append(task);
+}
+
+function deleteTask(e) {
+    e.target.parentElement.parentElement.parentElement.remove();
+}
+
+deleteButton.addEventListener('click', deleteTask);
+
+sortButton.addEventListener('click', sortTasks);
+
+function sortTasks() {
+    arrow.className = 'arrow';
+    topHr.style.width = '7.5px';
+    bottomHr.style.width = '15px';
+    let tasks = document.querySelectorAll('.input');
+    let tasksArr = [];
+    tasks.forEach(item => tasksArr.push(item.value));
+    tasksArr.sort();
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].value = tasksArr[i];
+    }
+    sortButton.removeEventListener('click', sortTasks);
+    sortButton.addEventListener('click', reverseSortTasks);
+}
+
+function reverseSortTasks() {
+    arrow.className = 'arrow-reverse';
+    topHr.style.width = '15px';
+    bottomHr.style.width = '7.5px';
+    let tasks = document.querySelectorAll('.input');
+    let tasksArr = [];
+    tasks.forEach(item => tasksArr.push(item.value));
+    tasksArr.reverse();
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].value = tasksArr[i];
+    }
+    sortButton.removeEventListener('click', reverseSortTasks);
+    sortButton.addEventListener('click', sortTasks);
 }
 
