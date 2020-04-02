@@ -1,6 +1,6 @@
 main {
     width: 336px;
-    margin: 0px auto;
+    margin: 232px auto;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;
@@ -22,18 +22,51 @@ h1 {
 
 #sort-field {
     width: 310px;
+    height: 40px;
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 5px;
 }
 
 #sort-button {
-    width: 35px;
-    height: 20px;
-    background-image: url(/images/low\ to\ high.png);
-    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
     background-color: white;
     border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#arrow {
+    width: 20px;
+    height: 26px;
+    font-size: 19px;
+    color: #C4C4C4;
+}
+
+#hr-field {
+    width: 20px;
+    height: 15px;
+}
+
+hr {
+    text-align: left;
+    margin: 2.5px 0px;
+    height: 2.5px;
+    background-color: #C4C4C4;
+    border: none;
+}
+
+#top-hr {
+    width: 7.5px;
+}
+
+#middle-hr {
+    width: 10px;
+}
+
+#bottom-hr {
+    width: 15px;
 }
 
 #buttons-and-input-field {
@@ -52,6 +85,7 @@ h1 {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
+    background-color: white;
 }
 
 #four-dots {
@@ -63,7 +97,7 @@ h1 {
     height: 34px;
     border: 1px solid #C4C4C4;
     border-right: none;
-    border-right: none;
+    border-left: none;
 }
 
 #input-field {
@@ -84,6 +118,7 @@ h1 {
     border-bottom-right-radius: 10px;
     border: 1px solid #C4C4C4;
     border-left: none;
+    background-color: white;
 }
 
 #delete-mark {
