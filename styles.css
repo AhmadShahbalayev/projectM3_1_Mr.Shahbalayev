@@ -97,7 +97,6 @@ hr {
 .input-box {
     display: flex;
     justify-content: center;
-    margin-bottom: 3px;
 }
 
 .drag-tool {
@@ -203,6 +202,7 @@ hr {
     left: 0px;
 }
 
-.dragged-item {
+.dragging {
     background: #FFDC40;
+    cursor: grabbing;
 }

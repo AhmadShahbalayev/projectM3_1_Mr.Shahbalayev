@@ -15,6 +15,7 @@ function addNewTask() {
     // Creation of new input box:
     const newInputBox = document.createElement('div');
     newInputBox.classList.add('input-box');
+    newInputBox.setAttribute('draggable', 'true');
     // Creation of new drag tool:
     const newDragTool = document.createElement('div');
     newDragTool.classList.add('drag-tool');
@@ -41,6 +42,7 @@ function addNewTask() {
     newInputBox.append(newDeleteButton);
     const section = document.querySelector('section');
     section.append(newInputBox);
+    dragAndDrop();
 }
 
 // Function for deleting tasks:
@@ -95,3 +97,31 @@ function reverseSortTasks() {
     sortButton.addEventListener('click', sortTasks);
 }
 
+// Function for drag and drop:
+
+function dragAndDrop () {
+
+const container = document.querySelector('section');
+const inputBoxes = document.querySelectorAll('.input-box');
+
+inputBoxes.forEach(item => {
+    item.addEventListener('dragstart', () => {
+        console.log('DRAAGGGIINGGG');
+        item.firstElementChild.classList.add('dragging');
+        item.children[1].classList.add('dragging');
+        item.lastElementChild.classList.add('dragging');
+    })
+
+    item.addEventListener('dragend', () => {
+        item.firstElementChild.classList.remove('dragging');
+        item.children[1].classList.remove('dragging');
+        item.lastElementChild.classList.remove('dragging');
+    })
+})
+
+container.addEventListener('dragover', e => {
+    e.preventDefault();
+})
+
+}
+dragAndDrop();
