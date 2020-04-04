@@ -1,8 +1,4 @@
-// Global variables:
-
-const tasksField = document.getElementById('tasks-field');
-
-// Runs addNewTask function when 'Enter' clicked on user's keyboard:
+// Runs addNewTask function when 'Enter' key is pressed by user:
 
 document.addEventListener('keyup', (event) => {
     if (event.key == 'Enter') {
@@ -10,67 +6,57 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
-// Runs addNewTask function on click:
+// Runs addNewTask function on click: 
 
 const addButton = document.getElementById('add-button');
 addButton.addEventListener('click', addNewTask);
 
-// ADD BUTTON WORKS LIKE THIS:
-
 function addNewTask() {
-    // Creation of new buttons and input field:
-    const newButtonsAndInputField = document.createElement('div');
-    newButtonsAndInputField.classList.add('buttons-and-input-field');
-    newButtonsAndInputField.setAttribute('draggable', 'true');
-    // Creation new field for drag button:
-    const newDragButtonField = document.createElement('div');
-    newDragButtonField.classList.add('drag-button-field');
-    newButtonsAndInputField.append(newDragButtonField);
-    // Creation of drag button:
-    const newDragButton = document.createElement('button');
-    newDragButton.classList.add('drag-button');
-    newDragButton.innerHTML = '<span class="four-dots">&#8759;</span>';
-    newDragButtonField.appendChild(newDragButton);
-    // Creation new field for input:
-    const newInputField = document.createElement('div');
+    // Creation of new input box:
+    const newInputBox = document.createElement('div');
+    newInputBox.classList.add('input-box');
+    // Creation of new drag tool:
+    const newDragTool = document.createElement('div');
+    newDragTool.classList.add('drag-tool');
+    const newFourDots = document.createElement('span');
+    newFourDots.classList.add('four-dots');
+    newFourDots.innerHTML = '&#8759;';
+    newDragTool.append(newFourDots);
+    // Creation of new input field:
+    const newInputField = document.createElement('input');
+    newInputField.setAttribute('type', 'text');
+    newInputField.setAttribute('name', '_input');
     newInputField.classList.add('input-field');
-    newInput = document.createElement('input');
-    newInput.setAttribute('type', 'text');
-    newInput.setAttribute('name', '_input');
-    newInput.classList.add('input');
-    newInputField.appendChild(newInput);
-    newButtonsAndInputField.append(newInputField);
-    // Creation new field for delete button:
-    const newDeleteButtonField = document.createElement('div');
-    // Creation of delete button:
-    const newDeleteButton = document.createElement('button');
+    // Creation of new delete butotn:
+    const newDeleteButton = document.createElement('div');
     newDeleteButton.classList.add('delete-button');
-    const span = document.createElement('span');
-    span.classList.add('delete-mark');
-    span.innerHTML = "&#10005;";
-    newDeleteButton.appendChild(span);
-    newDeleteButtonField.appendChild(newDeleteButton);
-    newButtonsAndInputField.append(newDeleteButtonField);
-    appendTask(newButtonsAndInputField);
-    // Creation event listener to run deleteTask function:
-    span.addEventListener('click', deleteTask);
-    dragAndDrop();
+    const newDeleteMark = document.createElement('span');
+    newDeleteMark.classList.add('delete-mark');
+    newDeleteMark.innerHTML = '&#10005;';
+    newDeleteMark.addEventListener('click', deleteTask);
+    newDeleteButton.append(newDeleteMark);
+    // Putting everything together:
+    newInputBox.append(newDragTool);
+    newInputBox.append(newInputField);
+    newInputBox.append(newDeleteButton);
+    const section = document.querySelector('section');
+    section.append(newInputBox);
 }
 
-function appendTask(item) {
-    tasksField.append(item);
-}
-
-// DELETE BUTTON WORKS LIKE THIS:
-
-const deleteButton = document.getElementById('main-delete-mark');
-deleteButton.addEventListener('click', deleteTask);
+// Function for deleting tasks:
 
 function deleteTask(e) {
-    e.target.parentElement.parentElement.parentElement.remove();
+    if (e.target.parentElement.parentElement.parentElement.childElementCount > 1) {
+        e.target.parentElement.parentElement.remove();
+    } else {
+        e.target.parentElement.previousSibling.value = '';
+    }
 }
 
-// SORT BUTTON WORKS LIKE THIS:
+const mainDeleteMark = document.getElementById('main-delete-mark');
+mainDeleteMark.addEventListener('click', deleteTask);
+
+// Function for sorting tasks in alphabetical order, or reverse:
 
 const sortButton = document.getElementById('sort-button');
 const arrow = document.querySelector('.arrow-reverse');
@@ -83,7 +69,7 @@ function sortTasks() {
     arrow.className = 'arrow';
     topHr.style.width = '7.5px';
     bottomHr.style.width = '15px';
-    let tasks = document.querySelectorAll('.input');
+    let tasks = document.querySelectorAll('.input-field');
     let tasksArr = [];
     tasks.forEach(item => tasksArr.push(item.value));
     tasksArr.sort();
@@ -98,7 +84,7 @@ function reverseSortTasks() {
     arrow.className = 'arrow-reverse';
     topHr.style.width = '15px';
     bottomHr.style.width = '7.5px';
-    let tasks = document.querySelectorAll('.input');
+    let tasks = document.querySelectorAll('.input-field');
     let tasksArr = [];
     tasks.forEach(item => tasksArr.push(item.value));
     tasksArr.reverse();
@@ -109,4 +95,3 @@ function reverseSortTasks() {
     sortButton.addEventListener('click', sortTasks);
 }
 
-// DRAG AND DROP WORKS LIKE THIS:

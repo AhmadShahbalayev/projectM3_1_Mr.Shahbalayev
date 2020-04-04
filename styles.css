@@ -8,22 +8,25 @@ main {
     width: 336px;
     margin: 0 auto;
     border: 1px solid #C4C4C4;
-    box-sizing: border-box;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
-}
-
-h1 {
-    text-align: center;
-    font-weight: 900;
-    margin-bottom: 0;
 }
 
 #header-field {
     width: 336px;
     height: 28px;
     background: #FFDC40;
+    border: 1px solid #C4C4C4;
     border-radius: 10px 10px 0 0;
+    position: relative;
+    right: 1px;
+    bottom: 1px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 0;
 }
 
 #sort-field {
@@ -35,7 +38,7 @@ h1 {
 
 #sort-button {
     width: 40px;
-    height: 40px;
+    height: 37px;
     background-color: white;
     border: none;
     display: flex;
@@ -49,6 +52,7 @@ h1 {
 
 #sort-button:hover {
     opacity: 100%;
+    cursor: pointer;
 }
 
 .arrow {
@@ -90,44 +94,35 @@ hr {
     width: 7.5px;  
 }
 
-.task-list-div {
-    width: 336px;
-    margin: 0px auto;
-}
-
-.buttons-and-input-field {
+.input-box {
     display: flex;
     justify-content: center;
+    margin-bottom: 3px;
 }
 
-.drag-button-field {
+.drag-tool {
     width: 40px;
-    height: 40px;
-    float: left;
-}
-
-.drag-button {
-    width: 40px;
-    height: 38px;
+    height: 36px;
     border-radius: 10px 0 0 10px;
     border: 1px solid #C4C4C4;
     border-right: none;
     display: flex;
     justify-content: center;
     background-color: white;
-    outline: none;
+    align-items: center;
 }
 
 .four-dots {
-    font-size: 175%;
+    font-size: 185%;
     transition: 0.1s;
 }
 
 .four-dots:hover {
     transform: scale(1.5);
+    cursor: grab;
 }
 
-.input {
+.input-field {
     width: 206px;
     height: 34px;
     border: 1px solid #C4C4C4;
@@ -136,33 +131,33 @@ hr {
     outline-color: #FFDC40;
 }
 
-.input-field {
-    width: 206px;
-    float: left;
-}
-
 .delete-button {
     width: 40px;
-    height: 38px;
+    height: 36px;
     border-radius: 0 10px 10px 0;
     border: 1px solid #C4C4C4;
     border-left: none;
+    display: flex;
+    justify-content: center;
     background-color: white;
-    outline: none;
+    align-items: center;
 }
 
 .delete-mark {
-    display: inline-block;
     border: 1px solid #C4C4C4;
     color: #C4C4C4;
     border-radius: 100%;
-    width: 18px;
+    width: 50%;
+    font-size: 91%;
     transition: 0.1s;
+    text-align: center;
+    align-items: center;
 }
 
 .delete-mark:hover {
     background-color: #833AE0;
     color: white;
+    cursor: pointer;
 }
 
 #add-field {

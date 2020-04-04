@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
     <title>Document</title>
 </head>
 
@@ -23,24 +24,17 @@
                 </span>
             </button>
         </div>
-        <div class="tasks-list-field" id="tasks-field">
-            <div class="buttons-and-input-field" draggable="true">
-                <div class="drag-button-field">
-                    <button class="drag-button"><span class="four-dots">&#8759;</span></button>
-                </div>
-                <div class="input-field">
-                    <input type="text" name="_input" class="input" id="input-id">
-                </div>
-                <div>
-                    <button class="delete-button"><span id="main-delete-mark" class="delete-mark">&#10005;</span></button>
-                </div>
+        <section>
+            <div class="input-box">
+                <div class="drag-tool"><span class="four-dots">&#8759;</span></div>
+                <input type="text" name="_input" class="input-field">
+                <div class="delete-button"><span id="main-delete-mark" class="delete-mark">&#10005;</span></div>
             </div>
-        </div>
+        </section>
         <div id="add-field">
             <button id="add-button"><span id="plus">+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Добавить</button>
         </div>
     </main>
-    <script src="script.js"></script>
 </body>
 
 </html>
