@@ -207,3 +207,7 @@ hr {
     position: absolute;
     left: 0px;
 }
+
+.dragged-item {
+    background: #FFDC40;
+}
