@@ -38,7 +38,7 @@ h1 {
 
 #sort-button {
     width: 40px;
-    height: 37px;
+    height: 36px;
     background-color: white;
     border: none;
     display: flex;
@@ -99,20 +99,25 @@ hr {
     justify-content: center;
 }
 
+section {
+    border: 1px solid #C4C4C4;
+    width: 286px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
 .drag-tool {
     width: 40px;
     height: 36px;
     border-radius: 10px 0 0 10px;
-    border: 1px solid #C4C4C4;
-    border-right: none;
     display: flex;
     justify-content: center;
-    background-color: white;
     align-items: center;
+    background-color: white;
 }
 
 .four-dots {
-    font-size: 185%;
+    font-size: 175%;
     transition: 0.1s;
 }
 
@@ -124,9 +129,7 @@ hr {
 .input-field {
     width: 206px;
     height: 34px;
-    border: 1px solid #C4C4C4;
-    border-right: none;
-    border-left: none;
+    border: none;
     outline-color: #FFDC40;
 }
 
@@ -134,8 +137,6 @@ hr {
     width: 40px;
     height: 36px;
     border-radius: 0 10px 10px 0;
-    border: 1px solid #C4C4C4;
-    border-left: none;
     display: flex;
     justify-content: center;
     background-color: white;

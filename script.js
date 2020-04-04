@@ -1,5 +1,7 @@
 // Runs addNewTask function when 'Enter' key is pressed by user:
 
+window.addEventListener('load', addNewTask);
+
 document.addEventListener('keyup', (event) => {
     if (event.key == 'Enter') {
         addNewTask();
@@ -42,7 +44,8 @@ function addNewTask() {
     newInputBox.append(newDeleteButton);
     const section = document.querySelector('section');
     section.append(newInputBox);
-    dragAndDrop();
+    // Function for drag and drop:
+    
 }
 
 // Function for deleting tasks:
@@ -54,9 +57,6 @@ function deleteTask(e) {
         e.target.parentElement.previousSibling.value = '';
     }
 }
-
-const mainDeleteMark = document.getElementById('main-delete-mark');
-mainDeleteMark.addEventListener('click', deleteTask);
 
 // Function for sorting tasks in alphabetical order, or reverse:
 
@@ -97,31 +97,6 @@ function reverseSortTasks() {
     sortButton.addEventListener('click', sortTasks);
 }
 
-// Function for drag and drop:
 
-function dragAndDrop () {
 
-const container = document.querySelector('section');
-const inputBoxes = document.querySelectorAll('.input-box');
 
-inputBoxes.forEach(item => {
-    item.addEventListener('dragstart', () => {
-        console.log('DRAAGGGIINGGG');
-        item.firstElementChild.classList.add('dragging');
-        item.children[1].classList.add('dragging');
-        item.lastElementChild.classList.add('dragging');
-    })
-
-    item.addEventListener('dragend', () => {
-        item.firstElementChild.classList.remove('dragging');
-        item.children[1].classList.remove('dragging');
-        item.lastElementChild.classList.remove('dragging');
-    })
-})
-
-container.addEventListener('dragover', e => {
-    e.preventDefault();
-})
-
-}
-dragAndDrop();
