@@ -99,6 +99,14 @@ hr {
     justify-content: center;
 }
 
+.input-box:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.input-box:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
 section {
     border: 1px solid #C4C4C4;
     width: 286px;
@@ -113,7 +121,6 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
 }
 
 .four-dots {
@@ -139,7 +146,6 @@ section {
     border-radius: 0 10px 10px 0;
     display: flex;
     justify-content: center;
-    background-color: white;
     align-items: center;
 }
 
@@ -188,6 +194,7 @@ section {
 
 #add-button:hover {
     opacity: 75%;
+    cursor: pointer;
 }
 
 #plus {

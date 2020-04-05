@@ -14,10 +14,11 @@ const addButton = document.getElementById('add-button');
 addButton.addEventListener('click', addNewTask);
 
 function addNewTask() {
+
     // Creation of new input box:
     const newInputBox = document.createElement('div');
     newInputBox.classList.add('input-box');
-    newInputBox.setAttribute('draggable', 'true');
+
     // Creation of new drag tool:
     const newDragTool = document.createElement('div');
     newDragTool.classList.add('drag-tool');
@@ -25,11 +26,13 @@ function addNewTask() {
     newFourDots.classList.add('four-dots');
     newFourDots.innerHTML = '&#8759;';
     newDragTool.append(newFourDots);
+
     // Creation of new input field:
     const newInputField = document.createElement('input');
     newInputField.setAttribute('type', 'text');
     newInputField.setAttribute('name', '_input');
     newInputField.classList.add('input-field');
+
     // Creation of new delete butotn:
     const newDeleteButton = document.createElement('div');
     newDeleteButton.classList.add('delete-button');
@@ -38,12 +41,14 @@ function addNewTask() {
     newDeleteMark.innerHTML = '&#10005;';
     newDeleteMark.addEventListener('click', deleteTask);
     newDeleteButton.append(newDeleteMark);
+
     // Putting everything together:
     newInputBox.append(newDragTool);
     newInputBox.append(newInputField);
     newInputBox.append(newDeleteButton);
     const section = document.querySelector('section');
     section.append(newInputBox);
+
     // Function for drag and drop:
     
 }
