@@ -94,6 +94,13 @@ hr {
     width: 7.5px;  
 }
 
+section {
+    border: 1px solid #C4C4C4;
+    width: 286px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
 .input-box {
     display: flex;
     justify-content: center;
@@ -105,13 +112,6 @@ hr {
 
 .input-box:last-child {
     border-radius: 0 0 10px 10px;
-}
-
-section {
-    border: 1px solid #C4C4C4;
-    width: 286px;
-    margin: 0 auto;
-    border-radius: 10px;
 }
 
 .drag-tool {
@@ -211,6 +211,10 @@ section {
 }
 
 .dragging {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
     background: #FFDC40;
     cursor: grabbing;
 }
