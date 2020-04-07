@@ -22,6 +22,7 @@ function addNewTask() {
     // Creation of new drag tool:
     const newDragTool = document.createElement('div');
     newDragTool.classList.add('drag-tool');
+    newDragTool.setAttribute('draggable', 'true');
     const newFourDots = document.createElement('span');
     newFourDots.classList.add('four-dots');
     newFourDots.innerHTML = '&#8759;';
@@ -43,14 +44,10 @@ function addNewTask() {
     newDeleteButton.append(newDeleteMark);
 
     // Putting everything together:
-    newInputBox.append(newDragTool);
-    newInputBox.append(newInputField);
-    newInputBox.append(newDeleteButton);
-    const section = document.querySelector('section');
+    newInputBox.append(newDragTool, newInputField, newDeleteButton);
+    let section = document.querySelector('section');
     section.append(newInputBox);
-
-    // Function for drag and drop:
-    
+    dragAndDrop();
 }
 
 // Function for deleting tasks:
@@ -103,5 +100,43 @@ function reverseSortTasks() {
 }
 
 
+// Function for drag and drop:
+function dragAndDrop() {
+    const container = document.querySelector('section');
+    const draggables = document.querySelectorAll('.drag-tool');
 
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+            draggable.parentNode.classList.add('dragging');
+        })
+
+        draggable.addEventListener('dragend', () => {
+            draggable.parentNode.classList.remove('dragging');
+        })
+    })
+
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(container, e.clientY);
+        const draggable = document.querySelector('.dragging');
+        if (afterElement == null) {
+            container.appendChild(draggable);
+        } else {
+            container.insertBefore(draggable, afterElement);
+        }
+    })
+}
+
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.input-box:not(.dragging')];
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offest) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element
+}
 
