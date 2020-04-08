@@ -6,7 +6,6 @@ body {
     display: flex;
     align-items: center;
     height: 100vh;
-    position: relative;
 }
 
 main {
@@ -18,13 +17,12 @@ main {
 }
 
 #header-field {
-    width: 100%;
+    width: 100.2%;
     height: 28px;
     background: #FFDC40;
     border: 1px solid #C4C4C4;
     border-radius: 10px 10px 0 0;
     position: relative;
-    right: 1px;
     bottom: 1px;
 }
 
@@ -100,8 +98,10 @@ hr {
 section {
     border: 1px solid #C4C4C4;
     width: 286px;
+    min-height: 36px;
     margin: 0 auto;
     border-radius: 10px;
+    position: relative;
 }
 
 .input-box {
@@ -214,7 +214,10 @@ section {
     left: 0px;
 }
 
-.dragging {
+.absolute {
+    position: absolute;
+    top: 0;
+    z-index: 999999;
     background: #FFDC40;
     cursor: grabbing;
 }

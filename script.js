@@ -1,6 +1,8 @@
-// Runs addNewTask function when 'Enter' key is pressed by user:
+// When page loads,  this script creates and adds one empty task as default:
 
 window.addEventListener('load', addNewTask);
+
+// Runs addNewTask function when 'Enter' key is pressed or add-button was clicked by user:
 
 document.addEventListener('keyup', (event) => {
     if (event.key == 'Enter') {
@@ -8,46 +10,45 @@ document.addEventListener('keyup', (event) => {
     }
 })
 
-// Runs addNewTask function on click: 
-
 const addButton = document.getElementById('add-button');
 addButton.addEventListener('click', addNewTask);
+
+// Funciton for to create and add new tasks to the section:
 
 function addNewTask() {
 
     // Creation of new input box:
-    const newInputBox = document.createElement('div');
-    newInputBox.classList.add('input-box');
+    const inputBox = document.createElement('div');
+    inputBox.classList.add('input-box');
 
     // Creation of new drag tool:
-    const newDragTool = document.createElement('div');
-    newDragTool.classList.add('drag-tool');
-    newDragTool.setAttribute('draggable', 'true');
-    const newFourDots = document.createElement('span');
-    newFourDots.classList.add('four-dots');
-    newFourDots.innerHTML = '&#8759;';
-    newDragTool.append(newFourDots);
+    const dragTool = document.createElement('div');
+    dragTool.classList.add('drag-tool');
+    const fourDots = document.createElement('span');
+    fourDots.classList.add('four-dots');
+    fourDots.innerHTML = '&#8759;';
+    dragTool.append(fourDots);
 
     // Creation of new input field:
-    const newInputField = document.createElement('input');
-    newInputField.setAttribute('type', 'text');
-    newInputField.setAttribute('name', '_input');
-    newInputField.classList.add('input-field');
+    const inputField = document.createElement('input');
+    inputField.setAttribute('type', 'text');
+    inputField.setAttribute('name', '_input');
+    inputField.classList.add('input-field');
 
     // Creation of new delete butotn:
-    const newDeleteButton = document.createElement('div');
-    newDeleteButton.classList.add('delete-button');
-    const newDeleteMark = document.createElement('span');
-    newDeleteMark.classList.add('delete-mark');
-    newDeleteMark.innerHTML = '&#10005;';
-    newDeleteMark.addEventListener('click', deleteTask);
-    newDeleteButton.append(newDeleteMark);
+    const deleteButton = document.createElement('div');
+    deleteButton.classList.add('delete-button');
+    const deleteMark = document.createElement('span');
+    deleteMark.classList.add('delete-mark');
+    deleteMark.innerHTML = '&#10005;';
+    deleteMark.addEventListener('click', deleteTask);
+    deleteButton.append(deleteMark);
 
     // Putting everything together:
-    newInputBox.append(newDragTool, newInputField, newDeleteButton);
+    inputBox.append(dragTool, inputField, deleteButton);
     let section = document.querySelector('section');
-    section.append(newInputBox);
-    dragAndDrop();
+    section.append(inputBox);
+    dragAndDrop(dragTool, section);
 }
 
 // Function for deleting tasks:
@@ -101,42 +102,46 @@ function reverseSortTasks() {
 
 
 // Function for drag and drop:
-function dragAndDrop() {
-    const container = document.querySelector('section');
-    const draggables = document.querySelectorAll('.drag-tool');
 
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', () => {
-            draggable.parentNode.classList.add('dragging');
-        })
-
-        draggable.addEventListener('dragend', () => {
-            draggable.parentNode.classList.remove('dragging');
-        })
-    })
-
-    container.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(container, e.clientY);
-        const draggable = document.querySelector('.dragging');
-        if (afterElement == null) {
-            container.appendChild(draggable);
-        } else {
-            container.insertBefore(draggable, afterElement);
+function dragAndDrop(dragTool, section) {
+    dragTool.addEventListener('mousedown', mouseDown);
+    function mouseDown() {
+        let rect = dragTool.getBoundingClientRect().height;
+        window.addEventListener('mousemove', mouseMove);
+        function mouseMove(e) {
+            dragTool.parentElement.classList.add('absolute');
+            let y = e.clientY - rect / 2;
+            console.log('Y: ' + y);
+            let newY = y - section.offsetTop + 'px';
+            dragTool.parentElement.style.top = newY;
+            console.log('New TOP: ', dragTool.parentElement.style.top);
         }
-    })
+        window.addEventListener('mouseup', mouseUp);
+        function mouseUp() {
+            window.removeEventListener('mousemove', mouseMove);
+
+            let allTasks = document.querySelectorAll('.input-box');
+            let arr = Array.from(allTasks);
+            arr.sort((a, b) => {
+                a = a.getBoundingClientRect().top;
+                b = b.getBoundingClientRect().top;
+                return a - b;
+            })
+
+            dragTool.parentElement.classList.remove('absolute');
+
+            console.log(arr);
+
+            section.innerHTML = '';
+
+            arr.forEach(item => {
+                section.append(item);
+            })
+
+            window.removeEventListener('mouseup', mouseUp);
+        }
+    }
 }
 
-function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.input-box:not(.dragging')];
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offest) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element
-}
+
 
