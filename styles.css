@@ -102,6 +102,7 @@ section {
     margin: 0 auto;
     border-radius: 10px;
     position: relative;
+    overflow: hidden;
 }
 
 .input-box {
@@ -110,15 +111,6 @@ section {
     width: 100%;
     margin: 5x 0;
     padding: 5px 0;
-}
-
-
-.input-box:first-child {
-    border-radius: 10px 10px 0 0;
-}
-
-.input-box:last-child {
-    border-radius: 0 0 10px 10px;
 }
 
 .drag-tool {
@@ -132,6 +124,12 @@ section {
 .four-dots {
     font-size: 35px;
     transition: 0.1s;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .four-dots:hover {
