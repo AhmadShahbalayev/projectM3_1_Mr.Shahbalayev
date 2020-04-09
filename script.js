@@ -111,15 +111,15 @@ function dragAndDrop(dragTool, section) {
         function mouseMove(e) {
             dragTool.parentElement.classList.add('absolute');
             let y = e.clientY - rect / 2;
-            console.log('Y: ' + y);
             let newY = y - section.offsetTop + 'px';
-            dragTool.parentElement.style.top = newY;
-            console.log('New TOP: ', dragTool.parentElement.style.top);
+            let sectionRect = section.getBoundingClientRect();
+            if (e.clientY > (section.offsetTop + 7) && e.clientY < (sectionRect.bottom - 20)) {
+                dragTool.parentElement.style.top = newY;
+            }
         }
         window.addEventListener('mouseup', mouseUp);
         function mouseUp() {
             window.removeEventListener('mousemove', mouseMove);
-
             let allTasks = document.querySelectorAll('.input-box');
             let arr = Array.from(allTasks);
             arr.sort((a, b) => {
@@ -127,17 +127,11 @@ function dragAndDrop(dragTool, section) {
                 b = b.getBoundingClientRect().top;
                 return a - b;
             })
-
             dragTool.parentElement.classList.remove('absolute');
-
-            console.log(arr);
-
             section.innerHTML = '';
-
             arr.forEach(item => {
                 section.append(item);
             })
-
             window.removeEventListener('mouseup', mouseUp);
         }
     }

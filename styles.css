@@ -4,13 +4,12 @@
 
 body {
     display: flex;
-    align-items: center;
     height: 100vh;
 }
 
 main {
     width: 336px;
-    margin: 0 auto;
+    margin: auto;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
